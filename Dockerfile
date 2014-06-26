@@ -10,7 +10,7 @@ RUN yum install -y git autoconf libtool gcc-c++ which gettext tar wget unzip
 RUN git clone git://github.com/mono/mono /root/mono && \
     cd /root/mono && \
     git reset --hard f6da699 && \
-    ./autogen.sh --prefix=/usr --with-mcs-docs=no --enable-minimal=aot,profiler,pinvoke,debug,reflection_emit,logging,com && \
+    ./autogen.sh --prefix=/usr --with-mcs-docs=no --enable-minimal=aot,profiler,pinvoke,debug,logging,com && \
     make monolite_url=https://dl.dropbox.com/s/z00qa9cmbymjjlz/monolite-111-latest.tar.gz get-monolite-latest && \
     make CFLAGS=-Os && \
     make install && \
