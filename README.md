@@ -10,7 +10,7 @@ I will generally attempt to keep tags around as stable known working images.
 Releases
 ==================
 
-latest/master - based off the centos:6.4 Docker image and the latest mono git master at the time with most mono compile options left on
+latest/master - based off the centos:6.4 Docker image and the latest mono git master at the time, most mono compile options are left on
 
 centos6.4-mono.xxxxxxx - last tested image release suffixed with the mono git hash at the time of build
 
