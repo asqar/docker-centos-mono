@@ -11,9 +11,9 @@ RUN yum install -y git make autoconf libtool gcc-c++ which gettext tar wget unzi
 
 
 RUN rpm --import "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
-RUN yum install yum-utils
+RUN yum -y install yum-utils
 RUN yum-config-manager --add-repo http://download.mono-project.com/repo/centos/
-RUN yum install mono-complete
+RUN yum -y install mono-complete
 RUN mozroots --import --sync
 
 # Tidy up build dependencies
