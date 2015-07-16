@@ -9,17 +9,12 @@ WORKDIR ~/
 # Build deps
 RUN yum install -y git make autoconf libtool gcc-c++ which gettext tar wget unzip
 
-# Mono install
-# monolite is coming from my dropbox because the xamarin cdn is unreliable
-RUN git clone git://github.com/mono/mono ~/mono && \
-	cd ~/mono && \
-	./autogen.sh --prefix=/usr --with-mcs-docs=no --enable-minimal=aot,profiler,pinvoke,debug,logging,com && \
-	make monolite_url=https://dl.dropboxusercontent.com/u/3792172/Libs/monolite-135-latest.tar.gz get-monolite-latest && \
-	make CFLAGS=-Os && \
-	make install && \
-	strip /usr/bin/mono && \
-	cd ~/ && \
-	rm -rf ~/mono
+
+RUN rpm --import "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
+RUN yum install yum-utils
+RUN yum-config-manager --add-repo http://download.mono-project.com/repo/centos/
+RUN yum install mono-complete
+RUN mozroots --import --sync
 
 # Tidy up build dependencies
 # TODO: It sucks that I have to manually remove perl, which was included by autoconf, so investigate a way to remove these dependencies automatically
