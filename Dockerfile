@@ -25,3 +25,4 @@ RUN git clone git://github.com/mono/mono ~/mono && \
 # TODO: It sucks that I have to manually remove perl, which was included by autoconf, so investigate a way to remove these dependencies automatically
 #		I'm sure there's some yum command for it
 RUN yum remove -y git make autoconf libtool gcc-c++ tar wget unzip perl
+
